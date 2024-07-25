@@ -6,9 +6,9 @@ import os
 load_dotenv()
 
 token = os.getenv('EPC_TOKEN')
-page_size = os.getenv('PAGE_SIZE')
-output_file = os.getenv('OUTPUT_FILE')
-base_url = os.getenv('BASE_URL')
+page_size = os.getenv('EPC_PAGE_SIZE')
+output_file = os.getenv('EPC_OUTPUT_FILE')
+base_url = os.getenv('EPC_BASE_URL')
 query_params = {'size': page_size}
 
 headers = {
@@ -37,10 +37,10 @@ with open(output_file, 'w') as csvfile:
         csvfile.write(body)
         first_request = False
 
-# opener = urllib.request.build_opener()
-# opener.addheaders = list(headers.items())
-# urllib.request.install_opener(opener)
-# urllib.request.urlretrieve('https://epc.opendatacommunities.org/api/v1/non-domestic/search', 'mummas.csv')
+        print(search_after)
+        # takes approx 10min
+
+# "url": "https://api.os.uk/downloads/v1/dataPackages/0040188616/versions/6580207/downloads?fileName=AddressBaseCore_FULL_2024-07-22_001.csv.zip&key=C4QpesHFymuVtzTeAUVjBW24R2gRDEfq",
 
 
 #%%

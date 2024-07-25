@@ -1,4 +1,4 @@
 .idea
 .DS_Store
 .env
-data-analysis/downloads
+src/data-analysis/downloads

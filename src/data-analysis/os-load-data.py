@@ -14,26 +14,6 @@ base_url = os.getenv('OS_BASE_URL')
 full_url = f'{base_url}{token}'
 
 
-# def show_progress(block_num, block_size, total_size):
-#     global pbar
-#     if pbar is None:
-#         pbar = progressbar.ProgressBar(maxval=total_size)
-#         pbar.start()
-#
-#     downloaded = block_num * block_size
-#     if downloaded < total_size:
-#         pbar.update(downloaded)
-#     else:
-#         pbar.finish()
-#         pbar = None
-
-#
-# opener = urllib.request.build_opener()
-# urllib.request.install_opener(opener)
-# urllib.request.urlretrieve(full_url, output_file, show_progress)
-# 14% after 2hrs
-
-
 def download_file(url, file_name):
     file_open_mode = 'wb'
     if os.path.exists(file_name):

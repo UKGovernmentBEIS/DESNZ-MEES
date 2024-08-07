@@ -5,10 +5,9 @@ from tqdm import tqdm
 
 load_dotenv()
 
-token = os.getenv('OS_TOKEN')
-output_file = os.getenv('OS_FILENAME')
-base_url = os.getenv('OS_BASE_URL')
-full_url = f'{base_url}{token}'
+output_file = os.getenv('VOA_FILENAME')
+base_url = os.getenv('VOA_BASE_URL')
+full_url = base_url
 
 
 def download_file(url, file_name):

@@ -2,6 +2,7 @@
 .DS_Store
 .env
 src/data-analysis/downloads
+src/data-analysis/outputs
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

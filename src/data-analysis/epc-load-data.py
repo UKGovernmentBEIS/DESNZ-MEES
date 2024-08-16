@@ -40,7 +40,4 @@ with open(output_file, 'w') as csvfile:
         print(search_after)
         # takes approx 10min
 
-# "url": "https://api.os.uk/downloads/v1/dataPackages/0040188616/versions/6580207/downloads?fileName=AddressBaseCore_FULL_2024-07-22_001.csv.zip&key=C4QpesHFymuVtzTeAUVjBW24R2gRDEfq",
-
-
 #%%

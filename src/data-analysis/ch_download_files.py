@@ -6,7 +6,8 @@ from tqdm import tqdm
 load_dotenv()
 
 output_file = os.getenv('CH_OUTPUT_FILE')
-output_file_and_path = f'downloads/{output_file}'
+downloads_dir = os.getenv('DOWNLOADS_FOLDER')
+output_file_and_path = f'{downloads_dir}/{output_file}'
 base_url = os.getenv('CH_BASE_URL')
 full_url = base_url
 

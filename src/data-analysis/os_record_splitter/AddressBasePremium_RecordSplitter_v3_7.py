@@ -36,6 +36,11 @@ import os
 from io import StringIO
 import time
 from time import strftime
+## added
+from dotenv import load_dotenv
+load_dotenv()
+directorypath = os.getenv("OS_FILES_PATH")
+##
 
 # Header lines for the new CSV files these are used later to when writing the header to the new CSV files
 headings10=["RECORD_IDENTIFIER","CUSTODIAN_NAME","LOCAL_CUSTODIAN_NAME","PROCESS_DATE","VOLUME_NUMBER","ENTRY_DATE","TIME_STAMP","VERSION","FILE_TYPE"]
@@ -58,7 +63,7 @@ def createCSV():
     # Rather than using arguments the program asks the user to input the path to the folder of OS AddressBase Premium files
     # print('Please type in the full path to the directory of OS AddressBase zip files:')
     # directorypath = raw_input('Directory Path: ')
-    directorypath = os.getcwd()
+    # directorypath = os.getcwd()
     # An emtpy array and counter used to store and count the number of CSV files the program finds
     csvfileList = []
     csvfileCount = 0
@@ -107,123 +112,123 @@ def createCSV():
         pass
 
     # Create the ID10_Header_Records.csv file, it checks to see if it exists first, if so deletes it, then creates a fresh one
-    if os.path.isfile('ID10_Header_Records.csv'):
-        os.remove('ID10_Header_Records.csv')
-        header_10 = open('ID10_Header_Records.csv', 'a', encoding='utf-8')
+    if os.path.isfile('../downloads/os_abp_csv/ID10_Header_Records.csv'):
+        os.remove('../downloads/os_abp_csv/ID10_Header_Records.csv')
+        header_10 = open('../downloads/os_abp_csv/ID10_Header_Records.csv', 'a', encoding='utf-8')
         write10 = csv.writer(header_10, delimiter=',', quotechar='"', lineterminator='\n')
         write10.writerow(headings10)
     else:
-        header_10 = open('ID10_Header_Records.csv', 'a', encoding='utf-8')
+        header_10 = open('../downloads/os_abp_csv/ID10_Header_Records.csv', 'a', encoding='utf-8')
         write10 = csv.writer(header_10, delimiter=',', quotechar='"', lineterminator='\n')
         write10.writerow(headings10)
     # Create the ID11_Street_Records.csv file, it checks to see if it exists first, if so deletes it, then creates a fresh one
-    if os.path.isfile('ID11_Street_Records.csv'):
-        os.remove('ID11_Street_Records.csv')
-        street_11 = open('ID11_Street_Records.csv', 'a', encoding='utf-8')
+    if os.path.isfile('../downloads/os_abp_csv/ID11_Street_Records.csv'):
+        os.remove('../downloads/os_abp_csv/ID11_Street_Records.csv')
+        street_11 = open('../downloads/os_abp_csv/ID11_Street_Records.csv', 'a', encoding='utf-8')
         write11 = csv.writer(street_11, delimiter=',', quotechar='"', lineterminator='\n')
         write11.writerow(headings11)
     else:
-        street_11 = open('ID11_Street_Records.csv', 'a', encoding='utf-8')
+        street_11 = open('../downloads/os_abp_csv/ID11_Street_Records.csv', 'a', encoding='utf-8')
         write11 = csv.writer(street_11, delimiter=',', quotechar='"', lineterminator='\n')
         write11.writerow(headings11)
     # Create the ID15_StreetDesc_Records.csv file, it checks to see if it exists first, if so deletes it, then creates a fresh one
-    if os.path.isfile('ID15_StreetDesc_Records.csv'):
-        os.remove('ID15_StreetDesc_Records.csv')
-        streetdesc_15 = open('ID15_StreetDesc_Records.csv', 'a', encoding='utf-8')
+    if os.path.isfile('../downloads/os_abp_csv/ID15_StreetDesc_Records.csv'):
+        os.remove('../downloads/os_abp_csv/ID15_StreetDesc_Records.csv')
+        streetdesc_15 = open('../downloads/os_abp_csv/ID15_StreetDesc_Records.csv', 'a', encoding='utf-8')
         write15 = csv.writer(streetdesc_15, delimiter=',', quotechar='"', lineterminator='\n')
         write15.writerow(headings15)
     else:
-        streetdesc_15 = open('ID15_StreetDesc_Records.csv', 'a', encoding='utf-8')
+        streetdesc_15 = open('../downloads/os_abp_csv/ID15_StreetDesc_Records.csv', 'a', encoding='utf-8')
         write15 = csv.writer(streetdesc_15, delimiter=',', quotechar='"', lineterminator='\n')
         write15.writerow(headings15)
     # Create the ID21_BLPU_Records.csv file, it checks to see if it exists first, if so deletes it, then creates a fresh one
-    if os.path.isfile('ID21_BLPU_Records.csv'):
-        os.remove('ID21_BLPU_Records.csv')
-        blpu_21 = open('ID21_BLPU_Records.csv', 'a', encoding='utf-8')
+    if os.path.isfile('../downloads/os_abp_csv/ID21_BLPU_Records.csv'):
+        os.remove('../downloads/os_abp_csv/ID21_BLPU_Records.csv')
+        blpu_21 = open('../downloads/os_abp_csv/ID21_BLPU_Records.csv', 'a', encoding='utf-8')
         write21 = csv.writer(blpu_21, delimiter=',', quotechar='"', lineterminator='\n')
         write21.writerow(headings21)
     else:
-        blpu_21 = open('ID21_BLPU_Records.csv', 'a', encoding='utf-8')
+        blpu_21 = open('../downloads/os_abp_csv/ID21_BLPU_Records.csv', 'a', encoding='utf-8')
         write21 = csv.writer(blpu_21, delimiter=',', quotechar='"', lineterminator='\n')
         write21.writerow(headings21)
     # Create the ID23_XREF_Records.csv file, it checks to see if it exists first, if so deletes it, then creates a fresh one
-    if os.path.isfile('ID23_XREF_Records.csv'):
-        os.remove('ID23_XREF_Records.csv')
-        xref_23 = open('ID23_XREF_Records.csv', 'a', encoding='utf-8')
+    if os.path.isfile('../downloads/os_abp_csv/ID23_XREF_Records.csv'):
+        os.remove('../downloads/os_abp_csv/ID23_XREF_Records.csv')
+        xref_23 = open('../downloads/os_abp_csv/ID23_XREF_Records.csv', 'a', encoding='utf-8')
         write23 = csv.writer(xref_23, delimiter=',', quotechar='"', lineterminator='\n')
         write23.writerow(headings23)
     else:
-        xref_23 = open('ID23_XREF_Records.csv', 'a', encoding='utf-8')
+        xref_23 = open('../downloads/os_abp_csv/ID23_XREF_Records.csv', 'a', encoding='utf-8')
         write23 = csv.writer(xref_23, delimiter=',', quotechar='"', lineterminator='\n')
         write23.writerow(headings23)
     # Create the ID24_LPI_Records.csv file, it checks to see if it exists first, if so deletes it, then creates a fresh one
-    if os.path.isfile('ID24_LPI_Records.csv'):
-        os.remove('ID24_LPI_Records.csv')
-        lpi_24 = open('ID24_LPI_Records.csv', 'a', encoding='utf-8')
+    if os.path.isfile('../downloads/os_abp_csv/ID24_LPI_Records.csv'):
+        os.remove('../downloads/os_abp_csv/ID24_LPI_Records.csv')
+        lpi_24 = open('../downloads/os_abp_csv/ID24_LPI_Records.csv', 'a', encoding='utf-8')
         write24 = csv.writer(lpi_24, delimiter=',', quotechar='"', lineterminator='\n')
         write24.writerow(headings24)
     else:
-        lpi_24 = open('ID24_LPI_Records.csv', 'a', encoding='utf-8')
+        lpi_24 = open('../downloads/os_abp_csv/ID24_LPI_Records.csv', 'a', encoding='utf-8')
         write24 = csv.writer(lpi_24, delimiter=',', quotechar='"', lineterminator='\n')
         write24.writerow(headings24)
     # Create the ID28_DPA_Records.csv file, it checks to see if it exists first, if so deletes it, then creates a fresh one
-    if os.path.isfile('ID28_DPA_Records.csv'):
-        os.remove('ID28_DPA_Records.csv')
-        dp_28 = open('ID28_DPA_Records.csv', 'a', encoding='utf-8')
+    if os.path.isfile('../downloads/os_abp_csv/ID28_DPA_Records.csv'):
+        os.remove('../downloads/os_abp_csv/ID28_DPA_Records.csv')
+        dp_28 = open('../downloads/os_abp_csv/ID28_DPA_Records.csv', 'a', encoding='utf-8')
         write28 = csv.writer(dp_28, delimiter=',', quotechar='"', lineterminator='\n')
         write28.writerow(headings28)
     else:
-        dp_28 = open('ID28_DPA_Records.csv', 'a', encoding='utf-8')
+        dp_28 = open('../downloads/os_abp_csv/ID28_DPA_Records.csv', 'a', encoding='utf-8')
         write28 = csv.writer(dp_28, delimiter=',', quotechar='"', lineterminator='\n')
         write28.writerow(headings28)
     # Create the ID29_Metadata_Records.csv file, it checks to see if it exists first, if so deletes it, then creates a fresh one
-    if os.path.isfile('ID29_Metadata_Records.csv'):
-        os.remove('ID29_Metadata_Records.csv')
-        meta_29 = open('ID29_Metadata_Records.csv', 'a', encoding='utf-8')
+    if os.path.isfile('../downloads/os_abp_csv/ID29_Metadata_Records.csv'):
+        os.remove('../downloads/os_abp_csv/ID29_Metadata_Records.csv')
+        meta_29 = open('../downloads/os_abp_csv/ID29_Metadata_Records.csv', 'a', encoding='utf-8')
         write29 = csv.writer(meta_29, delimiter=',', quotechar='"', lineterminator='\n')
         write29.writerow(headings29)
     else:
-        meta_29 = open('ID29_Metadata_Records.csv', 'a', encoding='utf-8')
+        meta_29 = open('../downloads/os_abp_csv/ID29_Metadata_Records.csv', 'a', encoding='utf-8')
         write29 = csv.writer(meta_29, delimiter=',', quotechar='"', lineterminator='\n')
         write29.writerow(headings29)
     # Create the ID30_Successor_Records.csv file, it checks to see if it exists first, if so deletes it, then creates a fresh one
-    if os.path.isfile('ID30_Successor_Records.csv'):
-        os.remove('ID30_Successor_Records.csv')
-        suc_30 = open('ID30_Successor_Records.csv', 'a', encoding='utf-8')
+    if os.path.isfile('../downloads/os_abp_csv/ID30_Successor_Records.csv'):
+        os.remove('../downloads/os_abp_csv/ID30_Successor_Records.csv')
+        suc_30 = open('../downloads/os_abp_csv/ID30_Successor_Records.csv', 'a', encoding='utf-8')
         write30 = csv.writer(suc_30, delimiter=',', quotechar='"', lineterminator='\n')
         write30.writerow(headings30)
     else:
-        suc_30 = open('ID30_Successor_Records.csv', 'a', encoding='utf-8')
+        suc_30 = open('../downloads/os_abp_csv/ID30_Successor_Records.csv', 'a', encoding='utf-8')
         write30 = csv.writer(suc_30, delimiter=',', quotechar='"', lineterminator='\n')
         write30.writerow(headings30)
     # Create the ID31_Org_Records.csv file, it checks to see if it exists first, if so deletes it, then creates a fresh one
-    if os.path.isfile('ID31_Org_Records.csv'):
-        os.remove('ID31_Org_Records.csv')
-        org_31 = open('ID31_Org_Records.csv', 'a', encoding='utf-8')
+    if os.path.isfile('../downloads/os_abp_csv/ID31_Org_Records.csv'):
+        os.remove('../downloads/os_abp_csv/ID31_Org_Records.csv')
+        org_31 = open('../downloads/os_abp_csv/ID31_Org_Records.csv', 'a', encoding='utf-8')
         write31 = csv.writer(org_31, delimiter=',', quotechar='"', lineterminator='\n')
         write31.writerow(headings31)
     else:
-        org_31 = open('ID31_Org_Records.csv', 'a', encoding='utf-8')
+        org_31 = open('../downloads/os_abp_csv/ID31_Org_Records.csv', 'a', encoding='utf-8')
         write31 = csv.writer(org_31, delimiter=',', quotechar='"', lineterminator='\n')
         write31.writerow(headings31)
     # Create the ID32_Class_Records.csv file, it checks to see if it exists first, if so deletes it, then creates a fresh one
-    if os.path.isfile('ID32_Class_Records.csv'):
-        os.remove('ID32_Class_Records.csv')
-        class_32 = open('ID32_Class_Records.csv', 'a', encoding='utf-8')
+    if os.path.isfile('../downloads/os_abp_csv/ID32_Class_Records.csv'):
+        os.remove('../downloads/os_abp_csv/ID32_Class_Records.csv')
+        class_32 = open('../downloads/os_abp_csv/ID32_Class_Records.csv', 'a', encoding='utf-8')
         write32 = csv.writer(class_32, delimiter=',', quotechar='"', lineterminator='\n')
         write32.writerow(headings32)
     else:
-        class_32 = open('ID32_Class_Records.csv', 'a', encoding='utf-8')
+        class_32 = open('../downloads/os_abp_csv/ID32_Class_Records.csv', 'a', encoding='utf-8')
         write32 = csv.writer(class_32, delimiter=',', quotechar='"', lineterminator='\n')
         write32.writerow(headings32)
     # Create the ID99_Trailer_Records.csv file, it checks to see if it exists first, if so deletes it, then creates a fresh one
-    if os.path.isfile('ID99_Trailer_Records.csv'):
-        os.remove('ID99_Trailer_Records.csv')
-        trailer_99 = open('ID99_Trailer_Records.csv', 'a', encoding='utf-8')
+    if os.path.isfile('../downloads/os_abp_csv/ID99_Trailer_Records.csv'):
+        os.remove('../downloads/os_abp_csv/ID99_Trailer_Records.csv')
+        trailer_99 = open('../downloads/os_abp_csv/ID99_Trailer_Records.csv', 'a', encoding='utf-8')
         write99 = csv.writer(trailer_99, delimiter=',', quotechar='"', lineterminator='\n')
         write99.writerow(headings99)
     else:
-        trailer_99 = open('ID99_Trailer_Records.csv', 'a', encoding='utf-8')
+        trailer_99 = open('../downloads/os_abp_csv/ID99_Trailer_Records.csv', 'a', encoding='utf-8')
         write99 = csv.writer(trailer_99, delimiter=',', quotechar='"', lineterminator='\n')
         write99.writerow(headings99)
     print('Finished creating empty CSV files with Header line')
@@ -458,3 +463,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+#%%

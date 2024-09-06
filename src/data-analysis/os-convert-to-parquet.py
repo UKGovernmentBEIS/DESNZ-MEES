@@ -9,7 +9,7 @@ os_files_path = os.getenv('OS_FILES_PATH')
 csv_file_names = sorted(os.listdir(os_files_path))
 
 record_dfs = {}
-record_types = [21,23,28,31,32]
+record_types = [21,23,24,28,31,32]
 
 # read each file and assign to correct os record type
 for file_name in csv_file_names:

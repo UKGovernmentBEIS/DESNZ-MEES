@@ -8,8 +8,8 @@ public class Class1
      * create db - done
      *
      * give up on aws for now. can't create lambdas which are needed for data import to rds and db api
-     * filter abp by commercial only - smaller files, xref - only with uarns.
-     * recreate db and load in tables.
+     * filter abp by commercial only - smaller files, xref - only with uarns.  - done
+     * recreate db and load in tables. - done
      * web app, api, db, domain proj. all running locally
      * 
      * set up types, 

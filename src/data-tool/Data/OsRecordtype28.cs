@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace Desnz.Mees.DataTool.Data;
 
-public partial class AbpDeliveryPoint
+public partial class OsRecordtype28
 {
-    public short? RecordIdentifier { get; set; }
+    public string? RecordIdentifier { get; set; }
 
     public string? ChangeType { get; set; }
 
-    public long? ProOrder { get; set; }
+    public string? ProOrder { get; set; }
 
-    public long? Uprn { get; set; }
+    public string? Uprn { get; set; }
 
-    public long? Udprn { get; set; }
+    public string? Udprn { get; set; }
 
     public string? OrganisationName { get; set; }
 
@@ -23,7 +23,7 @@ public partial class AbpDeliveryPoint
 
     public string? BuildingName { get; set; }
 
-    public short? BuildingNumber { get; set; }
+    public string? BuildingNumber { get; set; }
 
     public string? DependentThoroughfare { get; set; }
 
@@ -53,13 +53,13 @@ public partial class AbpDeliveryPoint
 
     public string? PoBoxNumber { get; set; }
 
-    public DateOnly? ProcessDate { get; set; }
+    public string? ProcessDate { get; set; }
 
-    public DateOnly? StartDate { get; set; }
+    public string? StartDate { get; set; }
 
-    public DateOnly? EndDate { get; set; }
+    public string? EndDate { get; set; }
 
-    public DateOnly? LastUpdateDate { get; set; }
+    public string? LastUpdateDate { get; set; }
 
-    public DateOnly? EntryDate { get; set; }
+    public string? EntryDate { get; set; }
 }

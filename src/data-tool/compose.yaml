@@ -38,3 +38,8 @@ volumes:
 secrets:
   db-password:
     file: db/password.txt
+  api:
+    image: api
+    build:
+      context: .
+      dockerfile: Api/Dockerfile

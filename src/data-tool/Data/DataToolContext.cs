@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Desnz.Mees.DataTool.Domain.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace Desnz.Mees.DataTool.Data;
 
 public partial class DataToolContext : DbContext
 {
+    private readonly DataConfiguration? _config;
+
     public DataToolContext()
     {
     }
@@ -13,6 +15,14 @@ public partial class DataToolContext : DbContext
     public DataToolContext(DbContextOptions<DataToolContext> options)
         : base(options)
     {
+    }
+
+    public DataToolContext(
+        DbContextOptions<DataToolContext> options, 
+        IOptions<DataConfiguration> config)
+        : base(options)
+    {
+        _config = config.Value;
     }
 
     public virtual DbSet<ChCompany> ChCompanies { get; set; }
@@ -42,8 +52,7 @@ public partial class DataToolContext : DbContext
     public virtual DbSet<VoaBusinessRate> VoaBusinessRates { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("Connection String");
+        => optionsBuilder.UseNpgsql(_config?.DbConnectionString);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

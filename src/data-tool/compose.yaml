@@ -43,3 +43,9 @@ secrets:
     build:
       context: .
       dockerfile: Api/Dockerfile
+
+  web:
+    image: web
+    build:
+      context: .
+      dockerfile: Web/Dockerfile

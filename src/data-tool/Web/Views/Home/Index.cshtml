@@ -1,8 +1,16 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model Desnz.Mees.DataTool.Web.Models.EpcSummariesViewModel
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <ul>
+        
+    
+    @foreach (var summary in Model.EpcNonDomestics)
+    {
+        <li>@summary.Address</li>
+    }
+    </ul>
 </div>

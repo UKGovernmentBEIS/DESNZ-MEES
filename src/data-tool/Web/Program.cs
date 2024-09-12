@@ -1,7 +1,23 @@
+using Desnz.Mees.DataTool.Data;
+using Desnz.Mees.DataTool.Data.Repositories;
+using Desnz.Mees.DataTool.Domain.Configuration;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+//
+builder.Services.AddOptions();
+builder.Services.Configure<DataConfiguration>(builder.Configuration.GetSection("DataConfiguration"));
+builder.Services.AddSingleton(cfg => cfg.GetService<IOptions<DataConfiguration>>()!.Value);
+builder.Services.AddTransient<IEpcSummaryRepository, EpcSummaryRepository>();
+//
+builder.Services.AddDbContext<DataToolContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DbConnectionString")));
+
+builder.Services.AddTransient<IDataToolContext, DataToolContext>(provider => provider.GetService<DataToolContext>()!);
 
 var app = builder.Build();
 

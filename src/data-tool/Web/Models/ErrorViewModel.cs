@@ -1,4 +1,4 @@
-namespace Web.Models;
+namespace Desnz.Mees.DataTool.Web.Models;
 
 public class ErrorViewModel
 {

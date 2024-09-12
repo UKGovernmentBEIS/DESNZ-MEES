@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 
 namespace Desnz.Mees.DataTool.Data;
 
-public partial class DataToolContext : DbContext
+public partial class DataToolContext : DbContext, IDataToolContext
 {
     private readonly DataConfiguration? _config;
 

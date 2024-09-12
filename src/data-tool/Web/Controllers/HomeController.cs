@@ -1,21 +1,25 @@
 using System.Diagnostics;
+using Desnz.Mees.DataTool.Data.Repositories;
+using Desnz.Mees.DataTool.Web.Models;
 using Microsoft.AspNetCore.Mvc;
-using Web.Models;
 
-namespace Web.Controllers;
+namespace Desnz.Mees.DataTool.Web.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly IEpcSummaryRepository _epcSummaryRepository;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, IEpcSummaryRepository epcSummaryRepository)
     {
         _logger = logger;
+        _epcSummaryRepository = epcSummaryRepository;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var summaries = await _epcSummaryRepository.GetEpcSummaries("E08000034");
+        return View(new EpcSummariesViewModel(){EpcNonDomestics = summaries});
     }
 
     public IActionResult Privacy()

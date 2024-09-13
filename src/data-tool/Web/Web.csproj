@@ -6,6 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <RootNamespace>Desnz.Mees.DataTool.Web</RootNamespace>
+        <UserSecretsId>82be1bad-ebcb-4f79-842e-600e3bce7407</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>

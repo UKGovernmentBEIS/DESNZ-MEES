@@ -1,12 +1,8 @@
 services:
-  api:
-    image: api
-    build:
-      context: .
-      dockerfile: Api/Dockerfile
-      target: development
-
   web:
+    volumes:
+      # map the dotnet user-secret folder
+      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
     image: web
     build:
       context: .

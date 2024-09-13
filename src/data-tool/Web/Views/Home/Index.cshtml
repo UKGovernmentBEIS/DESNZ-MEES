@@ -5,9 +5,8 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
+    <h2>@DateTime.Now.ToLongTimeString()</h2>
     <ul>
-        
-    
     @foreach (var summary in Model.EpcNonDomestics)
     {
         <li>@summary.Address</li>

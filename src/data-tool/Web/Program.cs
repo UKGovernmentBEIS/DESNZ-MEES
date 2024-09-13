@@ -12,12 +12,12 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddOptions();
 builder.Services.Configure<DataConfiguration>(builder.Configuration.GetSection("DataConfiguration"));
 builder.Services.AddSingleton(cfg => cfg.GetService<IOptions<DataConfiguration>>()!.Value);
-builder.Services.AddTransient<IEpcSummaryRepository, EpcSummaryRepository>();
-//
-builder.Services.AddDbContext<DataToolContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DbConnectionString")));
+builder.Services.AddScoped<IEpcSummaryRepository, EpcSummaryRepository>();
 
-builder.Services.AddTransient<IDataToolContext, DataToolContext>(provider => provider.GetService<DataToolContext>()!);
+var dataConfig = builder.Configuration.GetSection("DataConfiguration").Get<DataConfiguration>();
+builder.Services.AddDbContext<DataToolContext>(options =>
+    options.UseNpgsql(dataConfig!.DbConnectionString!));
+builder.Services.AddScoped<IDataToolContext, DataToolContext>(provider => provider.GetService<DataToolContext>()!);
 
 var app = builder.Build();
 

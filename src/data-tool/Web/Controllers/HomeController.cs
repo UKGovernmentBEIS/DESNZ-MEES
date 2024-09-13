@@ -5,20 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Desnz.Mees.DataTool.Web.Controllers;
 
-public class HomeController : Controller
+public class HomeController(ILogger<HomeController> logger, IEpcSummaryRepository epcSummaryRepository)
+    : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-    private readonly IEpcSummaryRepository _epcSummaryRepository;
-
-    public HomeController(ILogger<HomeController> logger, IEpcSummaryRepository epcSummaryRepository)
-    {
-        _logger = logger;
-        _epcSummaryRepository = epcSummaryRepository;
-    }
 
     public async Task<IActionResult> Index()
     {
-        var summaries = await _epcSummaryRepository.GetEpcSummaries("E08000034");
+        var summaries = await epcSummaryRepository.GetEpcSummaries("E08000034");
         return View(new EpcSummariesViewModel(){EpcNonDomestics = summaries});
     }
 

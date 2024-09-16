@@ -4,5 +4,5 @@ namespace Desnz.Mees.DataTool.Web.Models;
 
 public class EpcSummariesViewModel
 {
-    public List<EpcNonDomestic> EpcNonDomestics { get; init; } = [];
+    public List<EpcSummary> EpcNonDomestics { get; init; } = [];
 }

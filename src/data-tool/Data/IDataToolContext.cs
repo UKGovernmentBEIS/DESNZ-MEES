@@ -20,4 +20,5 @@ public interface IDataToolContext
     DbSet<OsRecordtype31> OsRecordtype31s { get; set; }
     DbSet<OsRecordtype32> OsRecordtype32s { get; set; }
     DbSet<VoaBusinessRate> VoaBusinessRates { get; set; }
+    DatabaseFacade Database { get; }
 }

@@ -3,13 +3,42 @@
 }
 @model Desnz.Mees.DataTool.Web.Models.EpcSummariesViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <h2>@DateTime.Now.ToLongTimeString()</h2>
-    <ul>
+    <h2 class="govuk-heading-m">@DateTime.Now.ToLongTimeString()</h2>
+    <ul class="govuk-list govuk-list--spaced">
     @foreach (var summary in Model.EpcNonDomestics)
     {
-        <li>@summary.Address</li>
+        <li>
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    Companies House Name: @summary.CompanyName
+                </div>
+            </div>
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-half">
+                    @summary.Address<br/>@summary.Posttown<br/>@summary.Postcode    
+                </div>
+                <div class="govuk-grid-column-one-quarter">
+                    Rating: @summary.AssetRating<br/>
+                    Floor area: @summary.FloorArea<br/>
+                    VOA Rateable value: £@summary.RateableValue
+                </div>
+                <div class="govuk-grid-column-one-quarter govuk-!-text-align-right">
+                    @summary.AssetRatingBand
+                </div>
+            </div>
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    HMLR Proprietor Name: @summary.ProprietorName1
+                </div>
+            </div>
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">HMLR Proprietor Address:<br/>@summary.Proprietor1Address1</div>
+            </div>
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-half">Tenure: @summary.Tenure</div>
+                <div class="govuk-grid-column-one-half">Date Added: @summary.DateProprietorAdded</div>
+            </div>
+            <hr/>
+        </li>
     }
     </ul>
-</div>

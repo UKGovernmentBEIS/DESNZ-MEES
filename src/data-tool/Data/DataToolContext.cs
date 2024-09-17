@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 
 namespace Desnz.Mees.DataTool.Data;
 
-public partial class DataToolContext : DbContext
+public partial class DataToolContext : DbContext, IDataToolContext
 {
     private readonly DataConfiguration? _config;
 
@@ -52,7 +52,12 @@ public partial class DataToolContext : DbContext
     public virtual DbSet<VoaBusinessRate> VoaBusinessRates { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseNpgsql(_config?.DbConnectionString);
+    {
+        optionsBuilder.UseNpgsql(_config?.DbConnectionString, builder => 
+            builder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null)
+            );
+        base.OnConfiguring(optionsBuilder);
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

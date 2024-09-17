@@ -1,7 +1,12 @@
 services:
-  server:
+  web:
+    volumes:
+      # map the dotnet user-secret folder
+      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+    image: web
     build:
       context: .
+      dockerfile: Web/Dockerfile
       target: development
     ports:
       - 8080:80
@@ -13,8 +18,8 @@ services:
         - action: rebuild
           path: .
     environment:
-       - ASPNETCORE_ENVIRONMENT=Development
-       - ASPNETCORE_URLS=http://+:80'
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80'
   db:
     image: postgres
     restart: always
@@ -38,8 +43,4 @@ volumes:
 secrets:
   db-password:
     file: db/password.txt
-  api:
-    image: api
-    build:
-      context: .
-      dockerfile: Api/Dockerfile
+

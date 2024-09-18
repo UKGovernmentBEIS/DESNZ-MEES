@@ -6,7 +6,7 @@ services:
     image: web
     build:
       context: .
-      dockerfile: Web/Dockerfile
+      dockerfile: Dockerfile
       target: development
     ports:
       - 8080:80

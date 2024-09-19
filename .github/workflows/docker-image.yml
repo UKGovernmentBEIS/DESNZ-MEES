@@ -13,4 +13,4 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build ./src/data-tool/ --file src/data-tool/Dockerfile -t meesregistry.azurecr.io/final:${{ github.sha }}
+      run: docker build src/data-tool/ --file src/data-tool/Dockerfile -t meesregistry.azurecr.io/final:${{ github.sha }}

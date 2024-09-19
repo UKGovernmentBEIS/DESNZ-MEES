@@ -3,11 +3,10 @@ services:
     volumes:
       # map the dotnet user-secret folder
       - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
-    image: web
     build:
       context: .
       dockerfile: Dockerfile
-      target: development
+      target: dev
     ports:
       - 8080:80
     depends_on:

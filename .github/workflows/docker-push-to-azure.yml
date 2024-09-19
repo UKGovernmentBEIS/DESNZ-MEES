@@ -11,12 +11,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build -t meesregistry.azurecr.io/final:${{ github.sha }} src/data-tool/
+      
     - uses: azure/docker-login@v2
       with:
         login-server: meesregistry.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
-    - run: |
-        docker build -t meesregistry.azurecr.io/final:${{ github.sha }} ./src/data-tool
-        docker push meesregistry.azurecr.io/final:${{ github.sha }}
+    - run: docker push meesregistry.azurecr.io/final:${{ github.sha }}

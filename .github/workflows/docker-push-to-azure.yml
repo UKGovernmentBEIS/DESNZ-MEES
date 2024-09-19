@@ -18,5 +18,5 @@ jobs:
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
     - run: |
-        docker build src/data-tool/ --file src/data-tool/Dockerfile -t meesregistry.azurecr.io/final:${{ github.sha }}
+        docker build . --file src/data-tool/Dockerfile -t meesregistry.azurecr.io/final:${{ github.sha }}
         docker push meesregistry.azurecr.io/final:${{ github.sha }}

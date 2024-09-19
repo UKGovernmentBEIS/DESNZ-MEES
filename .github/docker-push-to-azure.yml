@@ -1,0 +1,22 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: azure/docker-login@v2
+      with:
+        login-server: meesregistry.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+
+    - run: |
+        docker build ./src/data-tool/ --file src/data-tool/Dockerfile -t meesregistry.azurecr.io/final:${{ github.sha }}
+        docker push meesregistry.azurecr.io/final:${{ github.sha }}

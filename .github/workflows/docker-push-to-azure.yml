@@ -22,3 +22,9 @@ jobs:
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
     - run: docker push meesregistry.azurecr.io/final:${{ github.sha }}
+    
+    - uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'mees-web'
+        publish-profile: ${{ secrets.PUBLISH_PROFILE }}
+        images: 'meesregistry.azurecr.io/final:${{ github.sha }}'

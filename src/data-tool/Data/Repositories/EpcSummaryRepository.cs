@@ -4,12 +4,12 @@ namespace Desnz.Mees.DataTool.Data.Repositories;
 
 public interface IEpcSummaryRepository
 {
-    Task<List<EpcSummary>> GetEpcSummaries(string? localAuthority, int limit);
+    Task<List<EpcSummary>> GetEpcSummaries(string localAuthority, int limit);
 }
 
 public class EpcSummaryRepository(IDataToolContext dataToolContext) : IEpcSummaryRepository
 {
-    public async Task<List<EpcSummary>> GetEpcSummaries(string? localAuthority, int limit = 100)
+    public async Task<List<EpcSummary>> GetEpcSummaries(string localAuthority, int limit = 100)
     {
         var result = await dataToolContext.Database
             .SqlQueryRaw<EpcSummary>(Sql, localAuthority, limit)

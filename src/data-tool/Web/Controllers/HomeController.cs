@@ -11,8 +11,9 @@ public class HomeController(ILogger<HomeController> logger, IEpcSummaryRepositor
 
     public async Task<IActionResult> Index()
     {
-        var summaries = await epcSummaryRepository.GetEpcSummaries("E08000025", 100);
-        return View(new EpcSummariesViewModel(){EpcNonDomestics = summaries});
+        logger.LogInformation("Index called");
+        var summaries = await epcSummaryRepository.GetEpcSummaries("E08000025", 10);
+        return View(new EpcSummariesViewModel{EpcNonDomestics = summaries});
     }
 
     public IActionResult Privacy()

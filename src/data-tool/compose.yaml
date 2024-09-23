@@ -2,13 +2,15 @@ services:
   web:
     volumes:
       # map the dotnet user-secret folder
-      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+      - ${HOME}/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+      - ${HOME}/.aspnet/https:/root/.aspnet/https/:ro
     build:
       context: .
       dockerfile: Dockerfile
       target: dev
     ports:
       - 8080:80
+      - 8081:443
     depends_on:
       db:
         condition: service_healthy
@@ -18,7 +20,7 @@ services:
           path: .
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80'
+      - ASPNETCORE_URLS=http://+:80;https://+:443'
   db:
     image: postgres
     restart: always

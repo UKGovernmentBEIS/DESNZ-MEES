@@ -3,7 +3,7 @@
 }
 @model Desnz.Mees.DataTool.Web.Models.EpcSummariesViewModel
 
-    <h2 class="govuk-heading-m">@DateTime.Now.ToLongTimeString()</h2>
+    <p class="govuk-body-l">@DateTime.Now.ToShortDateString() - @DateTime.Now.ToLongTimeString()</p>
     <ul class="govuk-list govuk-list--spaced">
     @foreach (var summary in Model.EpcNonDomestics)
     {

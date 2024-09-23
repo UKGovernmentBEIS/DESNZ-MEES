@@ -12,9 +12,10 @@ public class EpcSummaryRepository(IDataToolContext dataToolContext) : IEpcSummar
     public async Task<List<EpcSummary>> GetEpcSummaries(string localAuthority, int limit = 100)
     {
         var result = await dataToolContext.Database
-            .SqlQueryRaw<EpcSummary>(Sql, localAuthority, limit)
+            .SqlQueryRaw<EpcSummary>(Sql)
             .Where(summary => summary.LocalAuthority == localAuthority)
             .Take(limit)
+            .OrderBy(summary => summary.Postcode)
             .ToListAsync();
         return result;
     }
@@ -55,6 +56,5 @@ left join public.""ch-company"" ch
 left join public.""voa-business-rates"" voa
     on voa.uarn = os23.""CROSS_REFERENCE""
 where epc.""asset-rating-band"" in ('F', 'G')
-    and hmlr_ccod.""Tenure"" != 'Freehold'
-order by epc.""lmk-key""";
+    and hmlr_ccod.""Tenure"" != 'Freehold'";
 }

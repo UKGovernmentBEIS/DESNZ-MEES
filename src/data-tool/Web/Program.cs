@@ -11,11 +11,12 @@ using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Basic Auth
+// Basic Auth - only for POC.
 builder.Services.AddAuthentication(BasicAuthenticationDefaults.AuthenticationScheme)
     .AddBasic(BasicAuthenticationDefaults.AuthenticationScheme, options =>
     {
         options.Realm = "Desnz.Mees";
+        options.AllowInsecureProtocol = true; // azure requires https, container is only exposing http
         options.Events = new BasicAuthenticationEvents
         {
             OnValidateCredentials = context =>

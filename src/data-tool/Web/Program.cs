@@ -46,7 +46,6 @@ builder.Services.AddControllersWithViews(options =>
         .RequireAuthenticatedUser()
         .Build();
     options.Filters.Add(new AuthorizeFilter(policy));
-    options.Filters.Add(new RequireHttpsAttribute());
 });
 // Config
 builder.Services.AddOptions();
@@ -73,7 +72,6 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseHsts();
 app.UseStaticFiles();
 
 app.UseRouting();

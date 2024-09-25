@@ -56,5 +56,6 @@ left join public.""ch-company"" ch
 left join public.""voa-business-rates"" voa
     on voa.uarn = os23.""CROSS_REFERENCE""
 where epc.""asset-rating-band"" in ('F', 'G')
-    and hmlr_ccod.""Tenure"" != 'Freehold'";
+    and hmlr_ccod.""Tenure"" != 'Freehold'
+order by epc.postcode asc";
 }

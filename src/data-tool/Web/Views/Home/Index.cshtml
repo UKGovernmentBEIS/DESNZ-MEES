@@ -3,46 +3,47 @@
 }
 @model Desnz.Mees.DataTool.Web.Models.EpcSummariesViewModel
 
-    <p class="govuk-body-l">@DateTime.Now.ToShortDateString() - @DateTime.Now.ToLongTimeString()</p>
-    <ul class="govuk-list govuk-list--spaced">
-    @foreach (var summary in Model.EpcNonDomestics)
-    {
-        <li>
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-full">
-                    Companies House Name: @summary.CompanyName
-                </div>
+<p class="govuk-body-l">@DateTime.Now.ToString("U")</p>
+
+<ul class="govuk-list govuk-list--spaced">
+@foreach (var summary in Model.EpcNonDomestics)
+{
+    <li>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                Companies House Name: @summary.CompanyName
             </div>
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-one-half">
-                    @summary.Address<br/>@summary.Posttown<br/>@summary.Postcode    
-                </div>
-                <div class="govuk-grid-column-one-quarter">
-                    Rating: @summary.AssetRating<br/>
-                    Floor area: @summary.FloorArea<br/>
-                    VOA Rateable value: £@summary.RateableValue
-                </div>
-                <div class="govuk-grid-column-one-quarter govuk-!-text-align-right">
-                    <p class="govuk-body govuk-!-text-align-right">
-                        <strong class="govuk-tag">
-                            @summary.AssetRatingBand
-                        </strong>
-                    </p>
-                </div>
+        </div>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+                @summary.Address<br/>@summary.Posttown<br/>@summary.Postcode    
             </div>
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-full">
-                    HMLR Proprietor Name: @summary.ProprietorName1
-                </div>
+            <div class="govuk-grid-column-one-quarter">
+                Rating: @summary.AssetRating<br/>
+                Floor area: @summary.FloorArea<br/>
+                VOA Rateable value: £@summary.RateableValue
             </div>
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-full">HMLR Proprietor Address:<br/>@summary.Proprietor1Address1</div>
+            <div class="govuk-grid-column-one-quarter govuk-!-text-align-right">
+                <p class="govuk-body govuk-!-text-align-right">
+                    <strong class="govuk-tag">
+                        @summary.AssetRatingBand
+                    </strong>
+                </p>
             </div>
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-one-half">Tenure: @summary.Tenure</div>
-                <div class="govuk-grid-column-one-half">Date Added: @summary.DateProprietorAdded</div>
+        </div>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                HMLR Proprietor Name: @summary.ProprietorName1
             </div>
-            <hr/>
-        </li>
-    }
-    </ul>
+        </div>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">HMLR Proprietor Address:<br/>@summary.Proprietor1Address1</div>
+        </div>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">Tenure: @summary.Tenure</div>
+            <div class="govuk-grid-column-one-half">Date Added: @summary.DateProprietorAdded</div>
+        </div>
+        <hr/>
+    </li>
+}
+</ul>
